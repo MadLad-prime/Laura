@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Laura</title> <!-- CHANGE NAME -->
+    <link rel="stylesheet" href="style.css">
+    <!-- lightGallery CSS -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Optional: Font Awesome -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+</head>
+<body class="page-portfolio"> <!-- Unique body class for portfolio page -->
+
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="nav-logo">
+                <!-- Link back to home page -->
+                <a href="index.html">AR.</a> <!-- Initials or Logo -->
+            </div>
+            <ul>
+                <!-- Update links to point to index.html sections -->
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li> <!-- Link to self -->
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section content-section">
+            <h2 class="reveal">The Evidence</h2>
+            <p class="section-intro reveal">A curated selection. Click any image to enlarge.</p>
+
+            <!-- Modified grid container for lightGallery and JS sizing -->
+            <div id="portfolio-grid" class="portfolio-grid reveal">
+                <!-- Each item MUST be wrapped in an <a> -->
+                <!-- href: Full-resolution image path -->
+                <!-- src: Thumbnail/display image path (can be same) -->
+                <!-- data-sub-html: Optional caption -->
+
+                <!-- === UPDATE IMAGES & CAPTIONS === -->
+                <a href="r.jpeg" class="grid-item" data-sub-html="<h4>Look One</h4><p>Editorial</p>">
+                    <img src="r.jpeg" alt="Portfolio Image 1 - Description">
+                </a>
+                <a href="r.jpeg" class="grid-item" data-sub-html="<h4>Look Two</h4>">
+                    <img src="r.jpeg" alt="Portfolio Image 2 - Description">
+                </a>
+                <a href="r.jpeg" class="grid-item" data-sub-html="<h4>Look Three</h4>">
+                    <img src="r.jpeg" alt="Portfolio Image 3 - Description">
+                </a>
+                <a href="r.jpeg" class="grid-item" data-sub-html="<h4>Look Four</h4>">
+                    <img src="r.jpeg" alt="Portfolio Image 4 - Description">
+                </a>
+                <a href="r.jpeg" class="grid-item" data-sub-html="<h4>Look Five</h4>">
+                    <img src="r.jpeg" alt="Portfolio Image 5 - Description">
+                </a>
+                <a href="r.jpeg" class="grid-item" data-sub-html="<h4>Look Six (Wide)</h4>">
+                    <img src="r.jpeg" alt="Portfolio Image 6 - Description">
+                </a>
+                <a href="r.jpeg" class="grid-item" data-sub-html="<h4>Look Seven</h4>">
+                    <img src="r.jpeg" alt="Portfolio Image 7 - Description">
+                </a>
+                <!-- Add more items as needed, following the <a><img /></a> pattern -->
+                 <!-- <a href="path/to/large8.jpg" class="grid-item">
+                     <img src="path/to/thumb8.jpg" alt="Portfolio Image 8 - Description">
+                 </a> -->
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+         <!-- === UPDATE FOOTER TEXT === -->
+        <p>© 2024 Laura [Last Name?]. All Rights Reserved. <br> Please don't steal my pictures, that's rude.</p>
+    </footer>
+
+    <!-- Add lightGallery JS and dependencies (needs jQuery or Zepto for v1.x) -->
+    <!-- Use v2+ if you want to avoid jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <!-- imagesLoaded (for the new height adjustment script) -->
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script>
+    <!-- Optional lightgallery plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lg-fullscreen.js@1.2.0/dist/lg-fullscreen.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.3.0/dist/lg-zoom.min.js"></script>
+    <!-- Add other plugins like autoplay, pager, hash if needed -->
+
+    <!-- Link main script file (AFTER libraries) -->
+    <script src="script.js"></script>
+</body>
+</html>

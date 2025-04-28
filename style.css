@@ -1,0 +1,559 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --color-bg: #f8f4f0;
+    --color-text: #2a2a2a;
+    --color-primary: #1a1a1a;
+    --color-secondary: #e0bba1; /* Dusty rose/peach accent */
+    --color-subtle-bg: #ede8e4;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Raleway', sans-serif;
+
+    --container-width: 1100px;
+    --spacing-unit: 1rem; /* Approx 16px */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-unit);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-secondary);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.content-section {
+    padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 1.5);
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.section-intro {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    max-width: 700px;
+}
+
+/* --- Navigation --- */
+.main-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(248, 244, 240, 0.9); /* Semi-transparent bg */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+}
+
+.nav-logo a {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+}
+
+.main-nav a {
+    font-weight: 400;
+    font-size: 1rem;
+    padding-bottom: 5px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease-out;
+}
+
+/* Active Navigation Link Styles */
+.main-nav a.active { /* Base active state from JS */
+     color: var(--color-secondary); /* Or your preferred active color */
+     font-weight: 600;
+}
+.main-nav a.active::after {
+    width: 100%; /* Underline for active */
+    background-color: var(--color-secondary); /* Match active color */
+}
+/* Specific highlight for portfolio page link when on portfolio page */
+.page-portfolio .main-nav a[href="portfolio.html"],
+.page-portfolio .main-nav a[href="portfolio.html"]:hover {
+     color: var(--color-secondary);
+     font-weight: 600;
+}
+.page-portfolio .main-nav a[href="portfolio.html"]::after {
+    width: 100%;
+    background-color: var(--color-secondary);
+}
+/* Home page link hovers */
+.page-home .main-nav a:hover {
+    color: var(--color-secondary);
+}
+.page-home .main-nav a:hover::after {
+    width: 100%;
+     background-color: var(--color-secondary);
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 3);
+    position: relative;
+    gap: var(--spacing-unit) * 2;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+.hero-content {
+    grid-column: 1 / 2;
+    z-index: 2;
+    max-width: 500px;
+}
+.hero-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    margin-bottom: 0.5em;
+    line-height: 1.1;
+}
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 300;
+    color: #444;
+}
+.hero-image-container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-image-container img {
+    max-height: 75vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
+    border: 8px solid var(--color-bg);
+}
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    text-align: center;
+}
+.scroll-down a {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text);
+    writing-mode: vertical-lr;
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+}
+.scroll-down span {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background-color: var(--color-text);
+    margin-bottom: 8px;
+    animation: scroll-pulse 2s infinite ease-in-out;
+    align-self: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+}
+@keyframes scroll-pulse {
+    0% { transform: scaleY(1); transform-origin: bottom; }
+    50% { transform: scaleY(0.3); transform-origin: bottom; }
+    100% { transform: scaleY(1); transform-origin: bottom; }
+}
+
+/* --- About Section --- */
+.about-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--spacing-unit) * 4);
+    align-items: center;
+    background-color: var(--color-subtle-bg);
+    padding-top: calc(var(--spacing-unit) * 6);
+    padding-bottom: calc(var(--spacing-unit) * 6);
+}
+.about-image-container {
+    position: relative;
+}
+.about-image-container img {
+     border: 1px solid rgba(0,0,0,0.1);
+     box-shadow: -10px 10px 25px rgba(0,0,0,0.08);
+     object-fit: cover;
+}
+.about-text h2 {
+    text-align: left;
+}
+.about-text h2::after {
+    left: 0;
+}
+
+/* --- CTA Button --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding: calc(var(--spacing-unit)*0.8) calc(var(--spacing-unit)*2.5);
+    border: 1px solid var(--color-primary);
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    margin-top: var(--spacing-unit);
+    cursor: pointer;
+}
+.cta-button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-color: var(--color-secondary);
+}
+
+/* --- Portfolio Section (on portfolio.html) --- */
+.portfolio-section {
+    text-align: center;
+}
+.portfolio-section h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* The #portfolio-grid or .portfolio-grid container */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default 3 columns */
+    gap: calc(var(--spacing-unit) * 1.5);
+    margin-top: calc(var(--spacing-unit) * 3);
+    align-items: start; /* Prevent vertical stretch */
+}
+
+/* Grid item is the <a> tag */
+.grid-item {
+    position: relative;
+    overflow: hidden;   /* IMPORTANT: Clips the image to the container */
+    cursor: pointer;
+    display: block;     /* Treat link as block */
+    width: 100%;
+    line-height: 0;     /* Prevent extra space below img */
+    background-color: var(--color-subtle-bg); /* BG placeholder */
+    /* NO height or aspect-ratio here - JS controls height */
+}
+
+/* The image inside the <a> tag */
+.grid-item img {
+    width: 100%;
+    display: block;    /* Essential */
+    object-fit: cover; /* IMPORTANT: Scales image to cover container */
+    height: 100%;      /* Let it try fill container, JS overrides height style */
+    transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+    /* NO height or aspect-ratio here - JS controls height on the IMG tag now */
+}
+
+/* Hover effect on the image */
+.grid-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.85);
+    opacity: 0.9;
+}
+
+/* Hover effect overlay on the <a> tag */
+.grid-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.grid-item:hover::before {
+    opacity: 1;
+}
+
+/* Wide item spanning */
+.grid-item.wide {
+    grid-column: span 2;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding-top: calc(var(--spacing-unit) * 6);
+    padding-bottom: calc(var(--spacing-unit) * 6);
+    text-align: center;
+}
+.contact-section h2 {
+    color: var(--color-bg);
+}
+.contact-section h2::after {
+    background-color: var(--color-secondary);
+    left: 50%;
+    transform: translateX(-50%);
+}
+.contact-section .section-intro {
+    color: #ccc;
+}
+.contact-form {
+    max-width: 600px;
+    margin: calc(var(--spacing-unit) * 3) auto;
+    text-align: left;
+}
+.form-group {
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+.form-group label {
+    display: block;
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ddd;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-unit);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    color: var(--color-bg);
+    font-family: var(--font-body);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+    opacity: 0.8;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.contact-section .cta-button {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-color: var(--color-secondary);
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+.contact-section .cta-button:hover {
+    background-color: transparent;
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+.contact-details {
+    margin-top: calc(var(--spacing-unit) * 3);
+    font-size: 0.95rem;
+    color: #ccc;
+}
+.contact-details a {
+    color: var(--color-secondary);
+    font-weight: 600;
+    margin: 0 10px;
+}
+.contact-details a:hover {
+    color: var(--color-bg);
+}
+.sarcastic-note {
+    display: block;
+    font-size: 0.85rem;
+    margin-top: var(--spacing-unit);
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 1.5);
+    font-size: 0.85rem;
+    color: #777;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    margin-top: calc(var(--spacing-unit) * 4);
+}
+
+/* --- Fade-in & Reveal Animations --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInAnimation 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+@keyframes fadeInAnimation {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 992px) { /* Tablet */
+    :root { --spacing-unit: 0.9rem; }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+    .grid-item.wide {
+        grid-column: span 2;
+    }
+
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: calc(var(--spacing-unit) * 8) calc(var(--spacing-unit) * 2);
+        min-height: auto;
+    }
+    .hero-content {
+        grid-row: 2 / 3;
+        margin-top: calc(var(--spacing-unit)*-2);
+        max-width: 100%;
+        padding: 0 calc(var(--spacing-unit) * 2);
+    }
+    .hero-image-container {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        max-width: 70%;
+        margin: 0 auto calc(var(--spacing-unit) * 3) auto;
+    }
+    .hero-image-container img { max-height: 50vh; }
+    .about-section { gap: calc(var(--spacing-unit) * 2); }
+    .scroll-down { display: none; }
+}
+
+@media (max-width: 576px) { /* Mobile */
+    :root { --spacing-unit: 0.8rem; }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 1 column */
+        gap: calc(var(--spacing-unit) * 1.2);
+    }
+    .grid-item.wide {
+        grid-column: span 1;
+    }
+
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .hero-image-container { max-width: 80%; }
+    .about-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .about-image-container {
+        max-width: 80%;
+        margin: 0 auto calc(var(--spacing-unit) * 2) auto;
+    }
+    .about-text h2 { text-align: center; }
+    .about-text h2::after { left: 50%; transform: translateX(-50%); }
+    .contact-details a { display: inline-block; margin-bottom: 10px; }
+    .sarcastic-note { max-width: 80%; margin-left: auto; margin-right: auto; }
+    .content-section { padding: calc(var(--spacing-unit) * 4) var(--spacing-unit); }
+    .hero-section { padding: calc(var(--spacing-unit) * 6) var(--spacing-unit); }
+}
+
+/* --- lightGallery Specific Styles (Optional Overrides) --- */
+/* Add minor tweaks if needed - check lightGallery docs */
+/* Example: Darker background */
+.lg-backdrop {
+    background-color: rgba(15, 15, 15, 0.95);
+}
+/* Example: Change icon colors */
+/* .lg-toolbar .lg-icon { color: var(--color-secondary); } */
